@@ -76,4 +76,4 @@ if lr_model and rf_model:
     st.pyplot(fig)
 
 # Footer
-st.markdown("Developed for SYN Attack Analysis in a controlled environment. 🚀 ")
+st.markdown("Developed for SYN Attack Analysis in a controlled environment. yay 🚀 ")
