@@ -77,4 +77,3 @@ if lr_model and rf_model:
 
 # Footer
 st.markdown("Developed for SYN Attack Analysis in a controlled environment. 🚀 ")
-
