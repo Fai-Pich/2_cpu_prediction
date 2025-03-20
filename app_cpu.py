@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load the trained models
 lr_model_filename = "linear_regression_model.pkl"
@@ -56,12 +57,24 @@ if lr_model and rf_model:
     st.write("### 🔍 Model Comparison:")
     st.write(f"📈 **Linear Regression Prediction:** {lr_prediction:.2f}%")
     st.write(f"🌲 **Random Forest Prediction:** {rf_prediction:.2f}%")
-    
-    # Display side-by-side comparison
-    st.bar_chart(pd.DataFrame({
-        "Linear Regression": [lr_prediction],
-        "Random Forest": [rf_prediction]
-    }, index=["Predicted CPU Usage"]))
+
+    # ✅ Side-by-side bar chart using Matplotlib
+    fig, ax = plt.subplots(figsize=(6, 4))
+
+    models = ["Linear Regression", "Random Forest"]
+    predictions = [lr_prediction, rf_prediction]
+
+    ax.bar(models, predictions, color=["blue", "green"], width=0.4)
+    ax.set_ylabel("Predicted CPU Usage (%)")
+    ax.set_title("CPU Usage Prediction Comparison")
+
+    # Show values on top of bars
+    for i, v in enumerate(predictions):
+        ax.text(i, v + 2, f"{v:.2f}%", ha='center', fontsize=12, fontweight='bold')
+
+    # Display the Matplotlib figure in Streamlit
+    st.pyplot(fig)
 
 # Footer
 st.markdown("Developed for SYN Attack Analysis in a controlled environment. 🚀 ")
+
