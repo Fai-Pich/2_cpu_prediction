@@ -67,15 +67,14 @@ if lr_model and rf_model:
     ax.bar(models, predictions, color=["blue", "green"], width=0.4)
     ax.set_ylabel("Predicted CPU Usage (%)")
     ax.set_title("CPU Usage Prediction Comparison")
-    ax.set_ylim(0, 100)  # ✅ Always show 0 to 100 on Y-axis
+    ax.set_ylim(0, 110)  # ✅ Increased to 110% for extra spacing
 
     # Show values on top of bars (smaller text, better positioning)
     for i, v in enumerate(predictions):
-        ax.text(i, v + 3, f"{v:.2f}%", ha='center', fontsize=10, fontweight='bold')  # ✅ Smaller text
+        ax.text(i, v + 6, f"{v:.2f}%", ha='center', fontsize=10, fontweight='bold')  # ✅ Increased gap (v + 6)
 
     # Display the Matplotlib figure in Streamlit
     st.pyplot(fig)
 
 # Footer
 st.markdown("Developed for SYN Attack Analysis in a controlled environment. 🚀 ")
-
