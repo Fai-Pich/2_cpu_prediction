@@ -58,7 +58,7 @@ if lr_model and rf_model:
     st.write(f"📈 **Linear Regression Prediction:** {lr_prediction:.2f}%")
     st.write(f"🌲 **Random Forest Prediction:** {rf_prediction:.2f}%")
 
-    # ✅ Side-by-side bar chart using Matplotlib with fixed scale (0-100%)
+    # ✅ Side-by-side bar chart using Matplotlib
     fig, ax = plt.subplots(figsize=(6, 4))
 
     models = ["Linear Regression", "Random Forest"]
@@ -67,14 +67,14 @@ if lr_model and rf_model:
     ax.bar(models, predictions, color=["blue", "green"], width=0.4)
     ax.set_ylabel("Predicted CPU Usage (%)")
     ax.set_title("CPU Usage Prediction Comparison")
-    ax.set_ylim(0, 110)  # ✅ Increased to 110% for extra spacing
 
-    # Show values on top of bars (smaller text, better positioning)
+    # Show values on top of bars
     for i, v in enumerate(predictions):
-        ax.text(i, v + 6, f"{v:.2f}%", ha='center', fontsize=10, fontweight='bold')  # ✅ Increased gap (v + 6)
+        ax.text(i, v + 2, f"{v:.2f}%", ha='center', fontsize=12, fontweight='bold')
 
     # Display the Matplotlib figure in Streamlit
     st.pyplot(fig)
 
 # Footer
 st.markdown("Developed for SYN Attack Analysis in a controlled environment. 🚀 ")
+
